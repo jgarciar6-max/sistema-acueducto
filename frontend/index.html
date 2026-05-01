@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema PQR Acueducto</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>📝 Formulario PQR</h1>
+
+        <form id="formPqr">
+            <div class="campo">
+                <label>Número de Radicado:</label>
+                <input type="text" id="numeroRadicado" placeholder="PQR-001">
+            </div>
+
+            <div class="campo">
+                <label>Nombre del Cliente:</label>
+                <input type="text" id="nombre" required>
+            </div>
+
+            <div class="campo">
+                <label>NIC:</label>
+                <input type="text" id="nic" required>
+            </div>
+
+            <div class="campo">
+                <label>Dirección:</label>
+                <input type="text" id="direccion" required>
+            </div>
+
+            <div class="campo">
+                <label>Tipo de Trabajo:</label>
+                <select id="tipoTrabajo">
+                    <option value="Fuga">Fuga</option>
+                    <option value="Daño">Daño en Red</option>
+                    <option value="Queja">Queja</option>
+                    <option value="Reclamo">Reclamo</option>
+                </select>
+            </div>
+
+            <div class="campo">
+                <label>Descripción del Problema:</label>
+                <textarea id="descripcionProblema" rows="4" required></textarea>
+            </div>
+
+            <div class="campo">
+                <label>Técnico Responsable:</label>
+                <input type="text" id="tecnicoResponsable">
+            </div>
+
+            <button type="submit" class="btn">Enviar PQR</button>
+        </form>
+
+        <div id="mensajeExito" style="display:none; color: green; margin-top: 20px; font-weight: bold;">
+            ✅ PQR enviado correctamente
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
