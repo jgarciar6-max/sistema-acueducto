@@ -2,54 +2,60 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Control de Inventario - Acueducto</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Control y Registro</title>
+    <!-- ✅ RUTA CORREGIDA -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<div class="container">
-    <h1>📦 Control de Inventario</h1>
+    <div class="contenedor-principal">
+        <h1>📦 🔐 CONTROL Y REGISTRO DE MOVIMIENTOS</h1>
 
-    <form id="formProducto">
-        <div class="campo">
-            <label>Código del Producto:</label>
-            <input type="text" id="codigo" placeholder="PROD-001" required>
+        <!-- ===== BUSCADOR QUE AGREGAMOS ===== -->
+        <div class="buscador">
+            <input type="text" id="buscadorInput" 
+                   placeholder="🔎 Buscar por: NOMBRE, CÓDIGO o N° PQR">
+            <button onclick="buscar()">BUSCAR</button>
         </div>
 
-        <div class="campo">
-            <label>Nombre del Artículo:</label>
-            <input type="text" id="nombre" required>
-        </div>
+        <!-- ===== LA TABLA QUE ME MANDÁSTE ===== -->
+        <table class="tabla-inventario">
+            <thead>
+                <tr>
+                    <th>📄 N° PQR / ORDEN</th>
+                    <th>👤 QUIEN SE LO LLEVA</th>
+                    <th>📦 NOMBRE MATERIAL</th>
+                    <th>📏 CANTIDAD / METROS</th>
+                    <th>📝 OBSERVACIÓN</th>
+                    <th>✍️ FIRMA</th>
+                    <th>🕒 HORA</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>PQR-005</td>
+                    <td>Carlos Alberto</td>
+                    <td>Tubo PVC 1/2</td>
+                    <td>10 Metros</td>
+                    <td>Para reparación de acueducto</td>
+                    <td>__________</td>
+                    <td>10:25 AM</td>
+                </tr>
+                <tr>
+                    <td>ORD-102</td>
+                    <td>Juan Pérez</td>
+                    <td>Manguera 3/4</td>
+                    <td>5 Metros</td>
+                    <td>Obra Calle 50</td>
+                    <td>__________</td>
+                    <td>10:30 AM</td>
+                </tr>
+            </tbody>
+        </table>
 
-        <div class="campo">
-            <label>Cantidad en Stock:</label>
-            <input type="number" id="cantidad" required>
-        </div>
-
-        <div class="campo">
-            <label>Unidad de Medida:</label>
-            <select id="unidad">
-                <option value="Unidad">Unidad</option>
-                <option value="Metro">Metro</option>
-                <option value="Kilo">Kilo</option>
-                <option value="Caja">Caja</option>
-            </select>
-        </div>
-
-        <div class="campo">
-            <label>Ubicación en Almacén:</label>
-            <input type="text" id="ubicacion" placeholder="Estante A - Nivel 2">
-        </div>
-
-        <button type="submit" class="btn">Guardar Producto</button>
-    </form>
-
-    <div id="mensajeExito" style="display:none; color: green; margin-top: 20px; font-weight: bold;">
-        ✅ Producto guardado correctamente
+        <button onclick="volver()" class="btn-volver">🔙 VOLVER AL MENÚ</button>
     </div>
-</div>
 
-<script src="inventario.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

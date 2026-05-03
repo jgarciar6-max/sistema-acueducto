@@ -1,65 +1,56 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema PQR Acueducto</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Sistema Acueducto</title>
+    <!-- ✅ RUTA CORREGIDA -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <div class="container">
-        <h1>📝 Formulario PQR</h1>
+    <div class="contenedor-principal">
+        <h1>SISTEMA DE CONTROL ACUEDUCTO</h1>
 
-        <form id="formPqr">
-            <div class="campo">
-                <label>Número de Radicado:</label>
-                <input type="text" id="numeroRadicado" placeholder="PQR-001">
+        <!-- LAS 3 CAJAS DE ARRIBA -->
+        <div class="cards-container">
+            <div class="card verde">
+                <h3>TOTAL PRODUCTOS</h3>
+                <p>200</p>
             </div>
-
-            <div class="campo">
-                <label>Nombre del Cliente:</label>
-                <input type="text" id="nombre" required>
+            <div class="card amarillo">
+                <h3>STOCK BAJO</h3>
+                <p>15</p>
             </div>
-
-            <div class="campo">
-                <label>NIC:</label>
-                <input type="text" id="nic" required>
+            <div class="card azul">
+                <h3>ÚLTIMOS MOVIMIENTOS</h3>
+                <p>19:20</p>
             </div>
+        </div>
 
-            <div class="campo">
-                <label>Dirección:</label>
-                <input type="text" id="direccion" required>
+        <!-- ===== LOS 4 BOTONES ACTUALIZADOS ===== -->
+        <div class="botones-container">
+            <button onclick="irReportes()">🖨️ IMPRIMIR REPORTE PDF</button>
+            <button onclick="irInventario()">📦 🔐 CONTROL Y REGISTRO</button>
+            <button onclick="irMovimientos()">📝 REGISTRAR ENTRADAS Y SALIDAS</button>
+            <button onclick="irUsuarios()">👤 GESTIÓN DE USUARIOS</button>
+        </div>
+
+        <!-- INFORMACIÓN DE ABAJO -->
+        <div class="info-container">
+            <div class="info-box">
+                <h4>ESTADO DE MATERIALES</h4>
+                <p>🟢 VERDE = DISPONIBLE</p>
+                <p>🟡 AMARILLO = POCO STOCK</p>
+                <p>🔴 ROJO = AGOTADO</p>
             </div>
-
-            <div class="campo">
-                <label>Tipo de Trabajo:</label>
-                <select id="tipoTrabajo">
-                    <option value="Fuga">Fuga</option>
-                    <option value="Daño">Daño en Red</option>
-                    <option value="Queja">Queja</option>
-                    <option value="Reclamo">Reclamo</option>
-                </select>
+            <div class="info-box">
+                <h4>ÚLTIMAS ACCIONES</h4>
+                <p>[10:25] Usuario - Movimiento registrado</p>
+                <p>[10:20] Usuario - Movimiento registrado</p>
             </div>
-
-            <div class="campo">
-                <label>Descripción del Problema:</label>
-                <textarea id="descripcionProblema" rows="4" required></textarea>
-            </div>
-
-            <div class="campo">
-                <label>Técnico Responsable:</label>
-                <input type="text" id="tecnicoResponsable">
-            </div>
-
-            <button type="submit" class="btn">Enviar PQR</button>
-        </form>
-
-        <div id="mensajeExito" style="display:none; color: green; margin-top: 20px; font-weight: bold;">
-            ✅ PQR enviado correctamente
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

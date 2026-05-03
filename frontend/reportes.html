@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Imprimir Reporte</title>
+    <!-- ✅ RUTA CORREGIDA -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="contenedor-principal">
+        <h1>IMPRIMIR REPORTE PDF</h1>
+
+        <div class="opciones-reporte">
+            <div class="campo">
+                <label>📅 Fecha Inicio:</label>
+                <input type="date" placeholder="DD/MM/AAAA">
+            </div>
+
+            <div class="campo">
+                <label>📅 Fecha Fin:</label>
+                <input type="date" placeholder="DD/MM/AAAA">
+            </div>
+
+            <div class="campo">
+                <label>📋 Tipo de Reporte:</label>
+                <select>
+                    <option>📋 REGISTRO DE ENTREGAS Y SALIDAS</option>
+                    <option>📦 INVENTARIO FÍSICO DE MATERIALES</option>
+                    <option>👤 HISTORIAL POR USUARIO / CÉDULA</option>
+                    <option>📄 CONTROL DE PQR Y ÓRDENES</option>
+                </select>
+            </div>
+
+            <button class="btn-imprimir">🖨️ GENERAR Y DESCARGAR PDF</button>
+            <button onclick="volver()" class="btn-volver">🔙 VOLVER AL MENÚ</button>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

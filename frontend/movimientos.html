@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Entradas y Salidas</title>
+    <!-- ✅ RUTA CORREGIDA -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Estilos extra solo para esta página */
+        .seccion {
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .salidas {
+            background-color: #28a745; /* VERDE */
+        }
+
+        .entradas {
+            background-color: #17a2b8; /* AZUL */
+        }
+
+        .seccion h2 {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+        }
+
+        .formulario-dividido {
+            display: flex;
+            justify-content: space-around;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .campo-dividido {
+            background-color: rgba(0,0,0,0.2);
+            padding: 15px;
+            border-radius: 10px;
+            min-width: 200px;
+        }
+
+        .campo-dividido label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .campo-dividido input,
+        .campo-dividido select {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .btn-accion {
+            margin-top: 15px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .btn-salida {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .btn-entrada {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="contenedor-principal">
+        <h1>REGISTRO DE MOVIMIENTOS</h1>
+
+        <!-- ===== SECCIÓN DE SALIDAS (ENTREGA DE MATERIAL) ===== -->
+        <div class="seccion salidas">
+            <h2>🔴 SALIDAS / ENTREGA</h2>
+            <div class="formulario-dividido">
+                <div class="campo-dividido">
+                    <label>📄 N° PQR / ORDEN</label>
+                    <input type="text" placeholder="Número">
+                </div>
+                <div class="campo-dividido">
+                    <label>👤 QUIEN SE LO LLEVA</label>
+                    <input type="text" placeholder="Nombre">
+                </div>
+                <div class="campo-dividido">
+                    <label>📦 MATERIAL</label>
+                    <input type="text" placeholder="Nombre">
+                </div>
+                <div class="campo-dividido">
+                    <label>📏 CANTIDAD / METROS</label>
+                    <input type="text" placeholder="Cantidad">
+                </div>
+                <div class="campo-dividido">
+                    <label>📝 OBSERVACIÓN</label>
+                    <input type="text" placeholder="Detalle">
+                </div>
+            </div>
+            <button class="btn-accion btn-salida">REGISTRAR SALIDA</button>
+        </div>
+
+        <!-- ===== SECCIÓN DE ENTRADAS (INGRESO DE MATERIAL) ===== -->
+        <div class="seccion entradas">
+            <h2>🟢 ENTRADAS / INGRESO</h2>
+            <div class="formulario-dividido">
+                <div class="campo-dividido">
+                    <label>📄 N° FACTURA / ORDEN</label>
+                    <input type="text" placeholder="Número">
+                </div>
+                <div class="campo-dividido">
+                    <label>📦 MATERIAL</label>
+                    <input type="text" placeholder="Nombre">
+                </div>
+                <div class="campo-dividido">
+                    <label>📏 CANTIDAD / METROS</label>
+                    <input type="text" placeholder="Cantidad">
+                </div>
+                <div class="campo-dividido">
+                    <label>📝 OBSERVACIÓN</label>
+                    <input type="text" placeholder="Detalle">
+                </div>
+            </div>
+            <button class="btn-accion btn-entrada">REGISTRAR ENTRADA</button>
+        </div>
+
+        <button onclick="volver()" class="btn-volver">🔙 VOLVER AL MENÚ</button>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
