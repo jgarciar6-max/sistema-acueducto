@@ -2,11 +2,11 @@ const mongoose = require('mongoose');
 
 const conectarDB = async () => {
     try {
-        await mongoose.connect(process.env.MONGO_URI);
-        console.log('💧 Base de Datos del Acueducto Conectada');
+        await mongoose.connect(process.env.MONGODB_URI);
+        console.log('✅ Conectado a MongoDB exitosamente!');
     } catch (error) {
-        console.error('Error al conectar:', error.message);
-        process.exit(1); // Detiene la app si no hay conexión
+        console.error('❌ Error de conexión:', error);
+        process.exit(1);
     }
 };
 
