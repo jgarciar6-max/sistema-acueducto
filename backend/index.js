@@ -4,7 +4,7 @@
 
 require('dotenv').config();
 const express = require('express');
-const mongoose = require('mongoose');
+const mongoose = require('mongoose'); // Importar mongoose, aunque no se usa directamente aquí si conectarDB lo maneja
 const cors = require('cors');
 
 const app = express();
@@ -16,8 +16,8 @@ conectarDB();
 
 // MIDDLEWARES
 app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json()); // Para parsear JSON en el cuerpo de las peticiones
+app.use(express.urlencoded({ extended: true })); // Para parsear datos de formularios URL-encoded
 
 
 // RUTA DE PRUEBA DEL SERVIDOR BASE
@@ -26,20 +26,18 @@ app.get('/', (req, res) => {
 });
 
 // ==============================================================
-// RUTA DIRECTA DE PRUEBA PARA MATERIALES (TEMPORALMENTE ACTIVA)
-// ¡ESTA LÍNEA DEBE ESTAR DESCOMENTADA PARA LA PRUEBA!
+// RUTA REAL DE MATERIALES (¡ESTA DEBE ESTAR ACTIVA Y USAR EL ROUTER!)
 // ==============================================================
-app.get('/api/materiales', (req, res) => {
-    res.json({ mensaje: '¡Hola desde la ruta directa de materiales!' });
-});
+// Importa y usa el router de materiales.
+// Ahora, al acceder a /api/materiales, se usará el router que definiste en materialRoutes.js
+app.use('/api/materiales', require('./routes/materialRoutes'));
 
 
 // ==============================================================
-// RUTA REAL DE MATERIALES (COMENTADA PARA ESTA PRUEBA)
-// DEBES DESCOMENTAR LA SIGUIENTE LÍNEA CUANDO LA PRUEBA DIRECTA FUNCIONE
-// Y QUITAR LA RUTA DIRECTA DE ARRIBA.
+// ¡IMPORTANTE!: Asegúrate que NO haya otras rutas duplicadas o
+// comentadas que puedan causar confusión, como la ruta directa
+// de prueba que teníamos antes.
 // ==============================================================
-// app.use('/api/materiales', require('./routes/materialRoutes'));
 
 
 // ENCENDER SERVIDOR
