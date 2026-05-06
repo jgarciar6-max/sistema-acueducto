@@ -1,42 +1,50 @@
+<!-- Contenido del NUEVO frontend/reportes.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Imprimir Reporte</title>
-    <!-- ✅ RUTA CORREGIDA -->
-    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de Reportes de Salida</title>
+    <link rel="stylesheet" href="css/style.css"> 
 </head>
 <body>
 
     <div class="contenedor-principal">
-        <h1>IMPRIMIR REPORTE PDF</h1>
+        <h1>📊 CONSULTA DE REPORTES DE SALIDA</h1>
 
-        <div class="opciones-reporte">
-            <div class="campo">
-                <label>📅 Fecha Inicio:</label>
-                <input type="date" placeholder="DD/MM/AAAA">
-            </div>
-
-            <div class="campo">
-                <label>📅 Fecha Fin:</label>
-                <input type="date" placeholder="DD/MM/AAAA">
-            </div>
-
-            <div class="campo">
-                <label>📋 Tipo de Reporte:</label>
-                <select>
-                    <option>📋 REGISTRO DE ENTREGAS Y SALIDAS</option>
-                    <option>📦 INVENTARIO FÍSICO DE MATERIALES</option>
-                    <option>👤 HISTORIAL POR USUARIO / CÉDULA</option>
-                    <option>📄 CONTROL DE PQR Y ÓRDENES</option>
-                </select>
-            </div>
-
-            <button class="btn-imprimir">🖨️ GENERAR Y DESCARGAR PDF</button>
-            <button onclick="volver()" class="btn-volver">🔙 VOLVER AL MENÚ</button>
+        <div class="buscador">
+            <input type="text" id="pqrBuscadorInput" 
+                   placeholder="🔎 Ingresa N° PQR o Parte de él..."
+                   aria-label="Buscar por número de PQR o parte de él">
+            <button id="btnBuscarReporte">BUSCAR REPORTE</button>
         </div>
+
+        <div style="text-align: center; margin-top: 20px; margin-bottom: 20px;">
+            <button id="btnCargarTodosLosReportes" class="btn-secondary">Cargar Todos los Reportes</button>
+        </div>
+
+        <table class="tabla-inventario">
+            <thead>
+                <tr>
+                    <th>N° PQR / ORDEN</th>
+                    <th>Quién se lo lleva</th>
+                    <th>Nombre Material</th>
+                    <th>Cantidad</th>
+                    <th>Unidad</th>
+                    <th>Observación</th>
+                    <th>Firma</th>
+                    <th>Hora</th>
+                    <th>Fecha Movimiento</th>
+                </tr>
+            </thead>
+            <tbody id="cuerpoTablaReportes">
+                <!-- Los reportes se cargarán aquí -->
+            </tbody>
+        </table>
+
+        <button onclick="window.location.href='index.html'" class="btn-volver">🔙 VOLVER AL MENÚ PRINCIPAL</button>
     </div>
 
-    <script src="js/script.js"></script>
+    <script src="js/reportes.js"></script> <!-- ESTE SCRIPT DEBE EXISTIR Y TENER LA LÓGICA -->
 </body>
 </html>

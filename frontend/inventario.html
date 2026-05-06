@@ -2,54 +2,41 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Control y Registro</title>
-    <!-- ✅ RUTA CORREGIDA -->
+    <title>Control y Registro de Materiales</title> <!-- Cambiado el título para mayor claridad -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
     <div class="contenedor-principal">
-        <h1>📦 🔐 CONTROL Y REGISTRO DE MOVIMIENTOS</h1>
+        <h1>📦 GESTIÓN DE MATERIALES</h1> <!-- Cambiado el título principal -->
 
-        <!-- ===== BUSCADOR QUE AGREGAMOS ===== -->
         <div class="buscador">
             <input type="text" id="buscadorInput" 
-                   placeholder="🔎 Buscar por: NOMBRE, CÓDIGO o N° PQR">
+                   placeholder="🔎 Buscar material por nombre, ID...">
             <button onclick="buscar()">BUSCAR</button>
         </div>
 
-        <!-- ===== LA TABLA QUE ME MANDÁSTE ===== -->
+        <!-- ===== BOTÓN PARA CARGAR MATERIALES DESDE LA BD ===== -->
+        <div style="text-align: center; margin-top: 20px; margin-bottom: 20px;">
+            <button id="btnCargarMateriales" class="btn-primary">Cargar Materiales</button>
+        </div>
+        <!-- ==================================================== -->
+
+        <!-- ===== TABLA PARA MOSTRAR LOS MATERIALES ===== -->
         <table class="tabla-inventario">
             <thead>
                 <tr>
-                    <th>📄 N° PQR / ORDEN</th>
-                    <th>👤 QUIEN SE LO LLEVA</th>
-                    <th>📦 NOMBRE MATERIAL</th>
-                    <th>📏 CANTIDAD / METROS</th>
-                    <th>📝 OBSERVACIÓN</th>
-                    <th>✍️ FIRMA</th>
-                    <th>🕒 HORA</th>
+                    <th>ID Material</th>
+                    <th>Nombre</th>
+                    <th>Cantidad</th>
+                    <th>Unidad</th>
+                    <th>Descripción</th>
+                    <th>Fecha Registro</th>
+                    <th>Registrado Por</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>PQR-005</td>
-                    <td>Carlos Alberto</td>
-                    <td>Tubo PVC 1/2</td>
-                    <td>10 Metros</td>
-                    <td>Para reparación de acueducto</td>
-                    <td>__________</td>
-                    <td>10:25 AM</td>
-                </tr>
-                <tr>
-                    <td>ORD-102</td>
-                    <td>Juan Pérez</td>
-                    <td>Manguera 3/4</td>
-                    <td>5 Metros</td>
-                    <td>Obra Calle 50</td>
-                    <td>__________</td>
-                    <td>10:30 AM</td>
-                </tr>
+            <tbody id="cuerpoTablaMateriales">
+                <!-- Aquí se cargarán los materiales dinámicamente con JavaScript -->
             </tbody>
         </table>
 
@@ -59,3 +46,4 @@
     <script src="js/script.js"></script>
 </body>
 </html>
+ este código es del inventario osea como me tiene que quedar

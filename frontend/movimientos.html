@@ -82,60 +82,68 @@
         <h1>REGISTRO DE MOVIMIENTOS</h1>
 
         <!-- ===== SECCIÓN DE SALIDAS (ENTREGA DE MATERIAL) ===== -->
+        <!-- ✅ Añado un ID al formulario de salidas para facilitar la escucha del evento submit -->
         <div class="seccion salidas">
             <h2>🔴 SALIDAS / ENTREGA</h2>
+            <!-- ✅ Añado ID a cada input -->
             <div class="formulario-dividido">
                 <div class="campo-dividido">
-                    <label>📄 N° PQR / ORDEN</label>
-                    <input type="text" placeholder="Número">
+                    <label for="salidaPqr">📄 N° PQR / ORDEN</label>
+                    <input type="text" id="salidaPqr" placeholder="Número">
                 </div>
                 <div class="campo-dividido">
-                    <label>👤 QUIEN SE LO LLEVA</label>
-                    <input type="text" placeholder="Nombre">
+                    <label for="salidaQuienSeLoLleva">👤 QUIEN SE LO LLEVA</label>
+                    <input type="text" id="salidaQuienSeLoLleva" placeholder="Nombre">
                 </div>
                 <div class="campo-dividido">
-                    <label>📦 MATERIAL</label>
-                    <input type="text" placeholder="Nombre">
+                    <label for="salidaMaterial">📦 MATERIAL</label>
+                    <input type="text" id="salidaMaterial" placeholder="Nombre">
                 </div>
                 <div class="campo-dividido">
-                    <label>📏 CANTIDAD / METROS</label>
-                    <input type="text" placeholder="Cantidad">
+                    <label for="salidaCantidad">📏 CANTIDAD / METROS</label>
+                    <input type="number" id="salidaCantidad" placeholder="Cantidad">
                 </div>
                 <div class="campo-dividido">
-                    <label>📝 OBSERVACIÓN</label>
-                    <input type="text" placeholder="Detalle">
+                    <label for="salidaObservacion">📝 OBSERVACIÓN</label>
+                    <input type="text" id="salidaObservacion" placeholder="Detalle">
                 </div>
             </div>
-            <button class="btn-accion btn-salida">REGISTRAR SALIDA</button>
+            <!-- ✅ Añado un ID al botón de registrar salida -->
+            <button class="btn-accion btn-salida" id="btnRegistrarSalida">REGISTRAR SALIDA</button>
         </div>
 
         <!-- ===== SECCIÓN DE ENTRADAS (INGRESO DE MATERIAL) ===== -->
+        <!-- ✅ Añado un ID al formulario de entradas -->
         <div class="seccion entradas">
             <h2>🟢 ENTRADAS / INGRESO</h2>
+            <!-- ✅ Añado ID a cada input -->
             <div class="formulario-dividido">
                 <div class="campo-dividido">
-                    <label>📄 N° FACTURA / ORDEN</label>
-                    <input type="text" placeholder="Número">
+                    <label for="entradaFactura">📄 N° FACTURA / ORDEN</label>
+                    <input type="text" id="entradaFactura" placeholder="Número">
                 </div>
                 <div class="campo-dividido">
-                    <label>📦 MATERIAL</label>
-                    <input type="text" placeholder="Nombre">
+                    <label for="entradaMaterial">📦 MATERIAL</label>
+                    <input type="text" id="entradaMaterial" placeholder="Nombre">
                 </div>
                 <div class="campo-dividido">
-                    <label>📏 CANTIDAD / METROS</label>
-                    <input type="text" placeholder="Cantidad">
+                    <label for="entradaCantidad">📏 CANTIDAD / METROS</label>
+                    <input type="number" id="entradaCantidad" placeholder="Cantidad">
                 </div>
                 <div class="campo-dividido">
-                    <label>📝 OBSERVACIÓN</label>
-                    <input type="text" placeholder="Detalle">
+                    <label for="entradaObservacion">📝 OBSERVACIÓN</label>
+                    <input type="text" id="entradaObservacion" placeholder="Detalle">
                 </div>
             </div>
-            <button class="btn-accion btn-entrada">REGISTRAR ENTRADA</button>
+            <!-- ✅ Añado un ID al botón de registrar entrada -->
+            <button class="btn-accion btn-entrada" id="btnRegistrarEntrada">REGISTRAR ENTRADA</button>
         </div>
 
+        <!-- El botón "volver" ya tiene onclick="volver()" y la función está en script.js, lo cual está bien. -->
         <button onclick="volver()" class="btn-volver">🔙 VOLVER AL MENÚ</button>
     </div>
 
+    <!-- ✅ Utilizas el mismo script.js. Tendremos que añadir la lógica de este formulario ahí. -->
     <script src="js/script.js"></script>
 </body>
 </html>
