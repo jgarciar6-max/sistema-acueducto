@@ -1,17 +1,33 @@
 const mongoose = require('mongoose');
 
-const MaterialSchema = mongoose.Schema({
+const MaterialSchema = new mongoose.Schema({
     nombre: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     cantidad: {
         type: Number,
-        required: true
+        required: true,
+        min: 0
     },
-    fechaCreacion: {
+    unidad: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    descripcion: {
+        type: String,
+        trim: true
+    },
+    fechaRegistro: {
         type: Date,
-        default: Date.now()
+        default: Date.now
+    },
+    registradoPor: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
     }
 });
 

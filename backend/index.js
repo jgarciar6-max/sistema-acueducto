@@ -4,12 +4,15 @@
 
 require('dotenv').config();
 const express = require('express');
-const mongoose = require('mongoose'); // Importar mongoose, aunque no se usa directamente aquí si conectarDB lo maneja
-const cors = require('cors');
+const mongoose = require('mongoose');
+const cors = require('cors'); // Importado una sola vez
+const authRoutes = require('./routes/authRoutes'); // Importado una sola vez
+const authMiddleware = require('./middlewares/authMiddleware'); // Importado una sola vez
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 const conectarDB = require('./config/db'); // Asegúrate que esta ruta a db.js es correcta
+
 
 // CONECTAR A MONGODB
 conectarDB();
@@ -31,6 +34,7 @@ app.get('/', (req, res) => {
 // Importa y usa el router de materiales.
 // Ahora, al acceder a /api/materiales, se usará el router que definiste en materialRoutes.js
 app.use('/api/materiales', require('./routes/materialRoutes'));
+app.use('/api/auth', authRoutes); // Usar las rutas de autenticación para /api/auth
 
 
 // ==============================================================
