@@ -1,56 +1,97 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>Sistema Acueducto</title>
-    <!-- ✅ RUTA CORREGIDA -->
+
+    <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
     <div class="contenedor-principal">
+
         <h1>SISTEMA DE CONTROL ACUEDUCTO</h1>
 
-        <!-- LAS 3 CAJAS DE ARRIBA -->
+        <!-- ========================= -->
+        <!-- TARJETAS SUPERIORES -->
+        <!-- ========================= -->
         <div class="cards-container">
+
             <div class="card verde">
                 <h3>TOTAL PRODUCTOS</h3>
-                <p>200</p>
+                <p id="totalProductos">0</p>
             </div>
+
             <div class="card amarillo">
                 <h3>STOCK BAJO</h3>
-                <p>15</p>
+                <p id="stockBajo">0</p>
             </div>
+
             <div class="card azul">
                 <h3>ÚLTIMOS MOVIMIENTOS</h3>
-                <p>19:20</p>
+                <p id="ultimoMovimiento">0</p>
             </div>
+
         </div>
 
-        <!-- ===== LOS 4 BOTONES ACTUALIZADOS ===== -->
+        <!-- ========================= -->
+        <!-- BOTONES -->
+        <!-- ========================= -->
         <div class="botones-container">
-            <button onclick="irReportes()"> CONSULTRAR SALIDAS</button>
-            <button onclick="irInventario()">GESTION DE MATERIALES</button>
-            <button onclick="irMovimientos()">REGISTRAR ENTRADAS Y SALIDAS</button>
-            <button onclick="irUsuarios()">👤 GESTIÓN DE USUARIOS</button>
+
+            <button onclick="irReportes()">
+                CONSULTAR SALIDAS
+            </button>
+
+            <button onclick="irInventario()">
+                GESTION DE MATERIALES
+            </button>
+
+            <button onclick="irMovimientos()">
+                REGISTRAR ENTRADAS Y SALIDAS
+            </button>
+
+            <button onclick="irUsuarios()">
+                👤 GESTIÓN DE USUARIOS
+            </button>
+
         </div>
 
-        <!-- INFORMACIÓN DE ABAJO -->
+        <!-- ========================= -->
+        <!-- INFORMACIÓN INFERIOR -->
+        <!-- ========================= -->
         <div class="info-container">
+
+            <!-- ESTADO -->
             <div class="info-box">
+
                 <h4>ESTADO DE MATERIALES</h4>
+
                 <p>🟢 VERDE = DISPONIBLE</p>
                 <p>🟡 AMARILLO = POCO STOCK</p>
                 <p>🔴 ROJO = AGOTADO</p>
+
             </div>
+
+            <!-- ÚLTIMAS ACCIONES -->
             <div class="info-box">
+
                 <h4>ÚLTIMAS ACCIONES</h4>
-                <p>[10:25] Usuario - Movimiento registrado</p>
-                <p>[10:20] Usuario - Movimiento registrado</p>
+
+                <div id="ultimasAcciones">
+                    <p>Cargando movimientos...</p>
+                </div>
+
             </div>
+
         </div>
+
     </div>
 
+    <!-- JS -->
     <script src="js/script.js"></script>
+
 </body>
 </html>

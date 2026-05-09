@@ -187,20 +187,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            materiales.forEach(material => {
-                const fila = document.createElement('tr');
-                fila.innerHTML = `
-                    <td>${material._id}</td>
-                    <td>${material.nombre}</td>
-                    <td>${material.cantidad}</td>
-                    <td>${material.unidad}</td>
-                    <td>${material.descripcion}</td>
-                    <td>${new Date(material.fechaRegistro).toLocaleDateString()}</td>
-                    <td>${material.registradoPor || 'N/A'}</td>
-                `;
-                cuerpoTablaMateriales.appendChild(fila);
-            });
+           materiales.forEach(material => {
 
+    const fila = document.createElement('tr');
+
+    let estado = '🟢 Disponible';
+
+    if (material.cantidad === 0) {
+        estado = '🔴 Agotado';
+    } else if (material.cantidad <= material.stockMinimo) {
+        estado = '🟡 Stock Bajo';
+    }
+
+    fila.innerHTML = `
+        <td>${material._id}</td>
+        <td>${material.nombre}</td>
+        <td>${material.cantidad}</td>
+        <td>${material.unidad}</td>
+        <td>${material.descripcion}</td>
+        <td>${new Date(material.fechaRegistro).toLocaleDateString()}</td>
+        <td>${material.registradoPor || 'N/A'}</td>
+        <td>${estado}</td>
+    `;
+
+    cuerpoTablaMateriales.appendChild(fila);
+});
         } catch (error) {
             console.error('Error al cargar o buscar materiales:', error);
             cuerpoTablaMateriales.innerHTML = `<tr><td colspan="7" style="color: red; text-align: center;">Error al cargar/buscar: ${error.message}</td></tr>`;
@@ -322,4 +333,149 @@ document.addEventListener('DOMContentLoaded', () => {
     if (cuerpoTablaReportes) { 
         cargarYMostrarReportes();
     }
+    // =================================================================================
+// ÚLTIMAS ACCIONES EN INDEX.HTML
+// =================================================================================
+
+const ultimasAcciones = document.getElementById('ultimasAcciones');
+
+async function cargarUltimasAcciones() {
+
+    if (!ultimasAcciones) return;
+
+    try {
+
+        const response = await fetch('http://localhost:3000/api/movimientos');
+
+        if (!response.ok) {
+            throw new Error('Error cargando movimientos');
+        }
+
+        const movimientos = await response.json();
+
+        ultimasAcciones.innerHTML = '';
+
+        // Mostrar SOLO los últimos 5 movimientos
+        const ultimos = movimientos.slice(-5).reverse();
+
+        ultimos.forEach(mov => {
+
+            const fecha = new Date(mov.fechaMovimiento);
+
+            const hora = fecha.toLocaleTimeString('es-ES', {
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+
+            const p = document.createElement('p');
+
+            p.innerHTML = `
+                [${hora}] ${mov.quienSeLoLleva} - 
+                Sacó ${mov.cantidad} de ${mov.nombreMaterial}
+            `;
+
+            ultimasAcciones.appendChild(p);
+
+        });
+
+    } catch (error) {
+
+        console.error(error);
+
+        ultimasAcciones.innerHTML = `
+            <p>Error cargando movimientos</p>
+        `;
+    }
+}
+
+// CARGAR AL INICIAR
+cargarUltimasAcciones();
+    // =================================================================================
+// DASHBOARD PRINCIPAL (index.html)
+// =================================================================================
+
+async function cargarDashboard() {
+
+    const totalProductos = document.getElementById('totalProductos');
+   const stockBajoElement = document.getElementById('stockBajo');
+const ultimoMovimiento = document.getElementById('ultimoMovimiento');
+stockBajoElement.textContent = stockBajo;
+const responseMov = await fetch('http://localhost:3000/api/movimientos');
+
+if (responseMov.ok) {
+
+    const movimientos = await responseMov.json();
+
+    if (movimientos.length > 0) {
+
+        const ultimo = movimientos[movimientos.length - 1];
+
+        const fecha = new Date(ultimo.fechaMovimiento);
+
+        const hora = fecha.toLocaleTimeString('es-ES', {
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+
+        ultimoMovimiento.textContent = hora;
+
+    } else {
+
+        ultimoMovimiento.textContent = 'Sin datos';
+
+    }
+}
+
+    // Si no estamos en index.html
+    if (!totalProductos || !stockBajo || !ultimoMovimiento) return;
+
+    try {
+
+        // =========================
+        // CARGAR MATERIALES
+        // =========================
+        const responseMateriales = await fetch('http://localhost:3000/api/materiales');
+        const materiales = await responseMateriales.json();
+
+        // TOTAL PRODUCTOS
+        totalProductos.textContent = materiales.length;
+
+        // STOCK BAJO
+        const bajos = materiales.filter(material =>
+            material.cantidad <= Number(material.stockMinimo)
+        );
+
+        stockBajo.textContent = bajos.length;
+
+        // =========================
+        // CARGAR MOVIMIENTOS
+        // =========================
+        const responseMovimientos = await fetch('http://localhost:3000/api/movimientos');
+        const movimientos = await responseMovimientos.json();
+
+        if (movimientos.length > 0) {
+
+            const ultimo = movimientos[movimientos.length - 1];
+
+            const fecha = new Date(ultimo.fechaMovimiento);
+
+            ultimoMovimiento.textContent =
+                fecha.toLocaleTimeString('es-ES', {
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+
+        } else {
+
+            ultimoMovimiento.textContent = 'Sin datos';
+        }
+
+    } catch (error) {
+
+        console.error('Error cargando dashboard:', error);
+    }
+}
+
+// CARGAR DASHBOARD
+cargarDashboard();
 });
